@@ -19,12 +19,10 @@ use Illuminate\Support\Facades\View;
 |
 */
 
-Route::get('/', [HomeController::class, 'show']);
+Route::get('/', [HomeController::class, 'show'])->name('home');
 
-Route::get('/product', [ProductController::class, 'showList']);
+Route::get('/product', [ProductController::class, 'showList'])->name('product-list');
 
-Route::get('/product/{id}', [ProductController::class, 'showDetail']);
+Route::get('/product/{id}', [ProductController::class, 'showDetail'])->name('product-detail');
 
-Route::get('/cart', [CartController::class, 'show']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/cart', [CartController::class, 'show'])->name('cart');
