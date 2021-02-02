@@ -35,6 +35,10 @@
     fill: #A9AD53;
 }
 
+.img-button:hover{
+    fill:#D0D650;
+}
+
 .btn{
     border: 2px solid #C3C76B;
     border-radius: 10px;
