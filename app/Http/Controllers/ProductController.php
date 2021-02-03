@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -11,9 +11,11 @@ class ProductController extends Controller
     {
         //$product = DB::select('select * from products where id = ?', [$id]);
 
-        $product = DB::table('products')
+        /*$product = DB::table('products')
             ->where('id', '=', $id)
             ->get();
+        */
+        $product = Product::where('id', '=', $id)->get();
 
         return view('product-detail', ['product' => $product[0]]);
     }
@@ -22,9 +24,12 @@ class ProductController extends Controller
     {
         //$products = DB::select('select * from products');
 
-        $products = DB::table('products')
+        /*$products = DB::table('products')
             ->select('*')
             ->get();
+        */
+
+        $products = Product::select('*')->get();
 
         return view('product-list', ['products' => $products]);
     }
