@@ -3,6 +3,19 @@
 @section('title', 'Produits')
 
 @section('content')
+    <!--<div class="container mt-3">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Trier par : </label>
+            <form action="{{ route('product-list') }}" method="GET">
+                <select name="sortBy" class="form-select" id="inputGroupSelect04">
+                    <option selected>Selectionner le type de tri...</option>
+                    <option value="name">Nom</option>
+                    <option value="price">Prix</option>
+                </select>
+                <button class="btn btn-outline-secondary" type="submit">Button</button>
+            </form>
+        </div>
+    </div>-->
     <div class="container mt-3">
         <div class="row row-cols-1 row-cols-md-2 g-4">
                 @foreach ($products as $product)
