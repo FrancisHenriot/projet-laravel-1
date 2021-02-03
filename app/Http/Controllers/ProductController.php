@@ -15,9 +15,9 @@ class ProductController extends Controller
             ->where('id', '=', $id)
             ->get();
         */
-        $product = Product::where('id', '=', $id)->get();
 
-        return view('product-detail', ['product' => $product[0]]);
+        $product = Product::findOrFail($id);
+        return view('product-detail', ['product' => $product]);
     }
 
     public function showList()
