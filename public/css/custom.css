@@ -70,3 +70,43 @@
 }
 
 /****NAVBAR-END****/
+/*-----------------------------footer------------------------------*/
+.container-fluid{
+    background-color: #453643;
+    height: 500px;
+}
+
+.social-media{
+    margin-left: 450px;
+    margin-right: 450px;
+}
+.smed{
+margin-top: 50px;
+}
+
+.smed img{
+    height: 40px;
+}
+.smed img:hover{
+    fill: rgba(208, 214, 80, 1);
+}
+.text{
+    margin-top: 20px;
+    color: rgba(169, 173, 83, 1);
+    font-size: 18px;
+    font-family: Abel;
+    text-align: center;
+}
+
+.form-abonne{
+padding-left: 40%;
+}
+
+input{
+    color: rgba(208, 214, 80, 1);
+    width: 45%;
+}
+button{
+    width: 40%;
+}
+/*-----------------------------end of footer------------------------------*/
