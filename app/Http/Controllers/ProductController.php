@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,6 +14,8 @@ class ProductController extends Controller
 
     public function showList()
     {
-        return view('product-list');
+        $products = DB::select('select * from products');
+
+        return view('product-list', ['products' => $products]);
     }
 }
