@@ -3,8 +3,6 @@
     <div class="container">
         <a href="{{ route('home') }}">
             <img class="img-fluid" src={{ asset('images/logo_clair.svg') }} alt="Logo RestHome">
-
-
         </a>
         <a href="{{ route('home') }}">
             <img class="img-fluid" src={{ asset('images/logo_texte_resthome_clair.svg') }} alt="Logo RestHome">
@@ -13,7 +11,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-5 me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mx-5 me-auto mb-2 mb-lg-0 align-items-center justify-content-end">
             <li class="nav-item dropdown mx-2">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     LES RECETTES
