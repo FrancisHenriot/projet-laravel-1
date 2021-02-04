@@ -8,19 +8,23 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /*version qui récupère l'id comme un integer
     public function showDetail($id) //Product $product)
     {
-        //$product = DB::select('select * from products where id = ?', [$id]);
-
-        /*$product = DB::table('products')
-            ->where('id', '=', $id)
-            ->get();
-        */
-
         $product = Product::findOrFail($id);
-        //dd($product);
+
         return view('product-detail', ['product' => $product]);
     }
+    */
+
+    /*version qui va directement créer un objet en rapport avec le modèle Product si il trouve l'id contenu dans la route*/
+    public function showDetail(Product $product)
+    {
+        //$product = Product::findOrFail($id);
+
+        return view('product-detail', ['product' => $product]);
+    }
+
 
     public function showList(Request $request)
     {
