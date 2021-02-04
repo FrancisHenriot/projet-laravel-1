@@ -33,7 +33,7 @@
                             <button class="btn" type="submit" name="addProduct">Add new product</button>
                         </a>
                     </div>
-                    <div class="col-4">
+                    <div class="col-8">
                         <!--<label for="exampleDataList" class="form-label">Datalist example</label>
                         <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
                         <datalist id="datalistOptions">
@@ -44,10 +44,10 @@
                         <option value="Chicago">
                         </datalist>-->
 
-                        <!--<form action="{{ route('backoffice') }}" method="get">
-                            <input type="text" placeholder="Nom ou Id">
-                            <button class="btn" type="submit" name="searchProduct">Search product</button>
-                        </form>-->
+                        <form action="{{ route('backoffice') }}" method="get">
+                            <button name="search" class="btn" type="submit">Search product</button>
+                            <input name="filter" type="text" placeholder="Saisir une partie du nom de l'article">
+                        </form>
                     </div>
                 </form>
             </div>
