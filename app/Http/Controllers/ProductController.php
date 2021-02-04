@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function showDetail($id)
+    public function showDetail($id) //Product $product)
     {
         //$product = DB::select('select * from products where id = ?', [$id]);
 
@@ -17,10 +18,11 @@ class ProductController extends Controller
         */
 
         $product = Product::findOrFail($id);
+        //dd($product);
         return view('product-detail', ['product' => $product]);
     }
 
-    public function showList()
+    public function showList(Request $request)
     {
         //$products = DB::select('select * from products');
 
@@ -28,9 +30,10 @@ class ProductController extends Controller
             ->select('*')
             ->get();
         */
-
-        $products = Product::select('*')->get();
-
+        $products = Product::all();
+        if ($request->has('sortBy') && ($request->sortBy == 'name' || $request->sortBy == 'price')) {
+            $products = $products->sortBy($request->sortBy);
+        }
         return view('product-list', ['products' => $products]);
     }
 }
