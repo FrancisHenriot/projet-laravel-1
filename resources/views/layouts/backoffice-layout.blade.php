@@ -28,32 +28,56 @@
         </div>
         <div class="container">
             <div class="row">
-                    <div class="col-4">
-                        <a href="{{ route('backoffice-new-form') }}">
-                            <button class="btn" type="submit" name="addProduct">Add new product</button>
-                        </a>
-                    </div>
-                    <div class="col-8">
-                        <!--<label for="exampleDataList" class="form-label">Datalist example</label>
-                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                        <datalist id="datalistOptions">
-                        <option value="San Francisco">
-                        <option value="New York">
-                        <option value="Seattle">
-                        <option value="Los Angeles">
-                        <option value="Chicago">
-                        </datalist>-->
+                <div class="col-6">
+                    <form action="@yield('route')" method="post">
+                        {{ csrf_field() }}
+                        @yield('message')
+                        <div class="mb-3 row">
+                            <label class="form-label col-3">Nom de l'article</label>
+                            <div class="col-8">
+                                <input name="name" value="@yield('productName')" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nom du produit">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="form-label col-3">Prix</label>
+                            <div class="col-8">
+                                <input name="price" value="@yield('productPrice')" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prix du produit">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="form-label col-3">Description</label>
+                            <div class="col-8">
+                                <textarea name="description"  class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description du produit">@yield('productDescription')</textarea>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <button class="btn" type="submit" name="add" @yield('addBtnStatus')>Ajouter</button>
+                                <button class="btn" type="submit" name="update" @yield('updateBtnStatus')>Modifier</button>
+                                <button class="btn" type="submit" name="delete" @yield('deleteBtnStatus')>Supprimer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-                        <form action="{{ route('backoffice') }}" method="get">
-                            <button name="search" class="btn" type="submit">Search product</button>
-                            <input name="filter" type="text" placeholder="Saisir une partie du nom de l'article">
-                        </form>
+                <div class="col-6">
+                    <div class='container'>
+
+                        <div class="col-8">
+                            <form action="{{ route('backoffice') }}" method="get">
+                                <button name="search" class="btn" type="submit">Search product</button>
+                                <input name="filter" type="text" placeholder="Saisir une partie du nom de l'article">
+                            </form>
+                        </div>
                     </div>
-                </form>
+                    <h2>Liste des produits</h2>
+
+                    @yield('list')
+                </div>
+
             </div>
         </div>
 
-        @yield('content')
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
