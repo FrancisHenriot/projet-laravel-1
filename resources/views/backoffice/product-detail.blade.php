@@ -27,12 +27,17 @@
         </div>
         <div class="container">
             <div class="row">
-                <button class="btn" type="submit" name="add" hidden>Ajouter</button>
-
                 <button class="btn" type="submit" name="update" >Modifier</button>
+            </div>
+        </div>
+    </form>
 
+    <form action="{{ route('deleteProduct', $product->id) }}" method="post">
+        {{ csrf_field() }}
+        @method('DELETE')
+        <div class="container">
+            <div class="row">
                 <button class="btn" type="submit" name="delete" >Supprimer</button>
-
             </div>
         </div>
     </form>

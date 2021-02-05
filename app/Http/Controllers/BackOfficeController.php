@@ -35,9 +35,6 @@ class BackOfficeController extends Controller
 
     public function modifyProduct(Product $product, Request $request)
     {
-        if ($request->has('delete')) {
-            return view('backoffice.product-delete', ['product' => $product, 'message' => 'Vous êtes sur le point de supprimer le produit Id : ' . $product->id]);
-        }
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
@@ -48,6 +45,6 @@ class BackOfficeController extends Controller
     public function deleteProduct(Product $product)
     {
         $product->delete();
-        return view('backoffice.product-delete', ['product' => $product, 'message' => 'Le produit Id : ' . $product->id . ' a été supprimé']);
+        return view('backoffice.product-detail', ['product' => $product, 'message' => 'Le produit Id : ' . $product->id . ' a été supprimé']);
     }
 }
