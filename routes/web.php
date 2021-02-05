@@ -35,7 +35,12 @@ Route::get('/product/{product}', [ProductController::class, 'showDetail'])->name
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
-Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
 
-Route::get('/backoffice/product', [BackOfficeController::class, 'showForm'])->name('backoffice-new-form');
-Route::post('/backoffice/product', [BackOfficeController::class, 'addProduct'])->name('add');
+
+Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
+Route::post('/backoffice', [BackOfficeController::class, 'addProduct'])->name('addProduct');
+
+Route::get('/backoffice/product/{product}', [BackOfficeController::class, 'showDetail'])->name('updateProduct');
+//Route::post('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
+Route::put('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
+Route::delete('/backoffice/product/{product}', [BackOfficeController::class, 'deleteProduct'])->name('deleteProduct');

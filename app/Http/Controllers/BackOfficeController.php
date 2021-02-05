@@ -12,31 +12,42 @@ class BackOfficeController extends Controller
     {
         if ($request->has('search')) {
             $products = Product::where('name', 'like',  '%' . $request->filter . '%')->get();
-            dd($products);
-            return view('backoffice.product-list');
+            return view('backoffice.product-list', ['products' => $products]);
         } else {
             return view('backoffice.index');
         }
     }
 
-    public function showForm()
+    public function showDetail(Product $product)
     {
-        return view('backoffice.newForm');
-    }
-
-    public function showList(Request $request)
-    {
-        $products = Product::where('name', '=', '*' . $request->filter, '*');
-        dd($products);
-        return view('backoffice.product-list');
+        return view('backoffice.product-detail', ['product' => $product, 'message' => 'Modification du produit Id : ' . $product->id]);
     }
 
     public function addProduct(Request $request)
     {
         $product = new Product;
         $product->name = $request->name;
+        $product->price = $request->price;
         $product->description = $request->description;
         $product->save();
-        return view('backoffice.index');
+        return view('backoffice.product-detail', ['product' => $product, 'message' => 'Le produit ' . $product->id . ' a bien été ajouté']);
+    }
+
+    public function modifyProduct(Product $product, Request $request)
+    {
+        if ($request->has('delete')) {
+            return view('backoffice.product-delete', ['product' => $product, 'message' => 'Vous êtes sur le point de supprimer le produit Id : ' . $product->id]);
+        }
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+        return view('backoffice.product-detail', ['product' => $product, 'message' => 'Le produit Id : ' . $product->id . ' a bien été modifié']);
+    }
+
+    public function deleteProduct(Product $product)
+    {
+        $product->delete();
+        return view('backoffice.product-delete', ['product' => $product, 'message' => 'Le produit Id : ' . $product->id . ' a été supprimé']);
     }
 }

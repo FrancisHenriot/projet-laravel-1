@@ -29,35 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <form action="@yield('route')" method="post">
-                        {{ csrf_field() }}
-                        @yield('message')
-                        <div class="mb-3 row">
-                            <label class="form-label col-3">Nom de l'article</label>
-                            <div class="col-8">
-                                <input name="name" value="@yield('productName')" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nom du produit">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label class="form-label col-3">Prix</label>
-                            <div class="col-8">
-                                <input name="price" value="@yield('productPrice')" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prix du produit">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label class="form-label col-3">Description</label>
-                            <div class="col-8">
-                                <textarea name="description"  class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description du produit">@yield('productDescription')</textarea>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <button class="btn" type="submit" name="add" @yield('addBtnStatus')>Ajouter</button>
-                                <button class="btn" type="submit" name="update" @yield('updateBtnStatus')>Modifier</button>
-                                <button class="btn" type="submit" name="delete" @yield('deleteBtnStatus')>Supprimer</button>
-                            </div>
-                        </div>
-                    </form>
+                    @yield('formulaire')
                 </div>
 
                 <div class="col-6">
