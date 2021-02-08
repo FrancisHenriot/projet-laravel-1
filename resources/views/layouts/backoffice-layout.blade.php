@@ -33,15 +33,14 @@
                 </div>
 
                 <div class="col-6">
-                    <div class='container'>
-
-                        <div class="col-8">
-                            <div class="row">
-                            <form action="{{ route('backoffice') }}" method="get">
-                                <button name="search" class="btn" type="submit">Search product</button>
-                                <input name="filter" class="form-control" type="text" placeholder="Saisir une partie du nom de l'article" >
-                            </form>
-                        </div>
+                    <div class="container">
+                        <div class="mb-3 row">
+                            <div class="col">
+                                <form action="{{ route('backoffice') }}" method="get">
+                                    <button name="search" class="btn" type="submit">Search product</button>
+                                    <input name="filter" class="" type="text" placeholder="Saisir une partie du nom de l'article" >
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <h2>Liste des produits</h2>
