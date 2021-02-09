@@ -17,10 +17,12 @@
                     LES RECETTES
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Healthy</a></li>
-                    <li><a class="dropdown-item" href="#">Gourmet</a></li>
-                    <li><a class="dropdown-item" href="#">Végan</a></li>
-                    <li><a class="dropdown-item" href="#">Rapide</a></li>
+                    <form action="{{ route('product-list') }}" method="GET">
+                        <li><button class="dropdown-item" name="categorie" value="2" type="submit">Healthy</button></li>
+                        <li><button class="dropdown-item" name="categorie" value="1" type="submit">Gourmet</button></li>
+                        <li><button class="dropdown-item" name="categorie" value="3" type="submit">Végan</button></li>
+                        <li><button class="dropdown-item" name="categorie" value="4" type="submit">Rapide</button></li>
+                    </form>
                 </ul>
             </li>
             <li class="nav-item dropdown mx-2">

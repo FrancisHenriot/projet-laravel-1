@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,6 @@ class ProductController extends Controller
     public function showDetail($id) //Product $product)
     {
         $product = Product::findOrFail($id);
-
         return view('product-detail', ['product' => $product]);
     }
     */
@@ -28,15 +28,13 @@ class ProductController extends Controller
 
     public function showList(Request $request)
     {
-        //$products = DB::select('select * from products');
-
-        /*$products = DB::table('products')
-            ->select('*')
-            ->get();
-        */
         $products = Product::all();
         if ($request->has('sortBy') && ($request->sortBy == 'name' || $request->sortBy == 'price')) {
             $products = $products->sortBy($request->sortBy);
+        }
+        if ($request->has('categorie')) {
+            $categorie = Categorie::find($request->categorie);
+            $products = $categorie->products;
         }
         return view('product-list', ['products' => $products]);
     }
