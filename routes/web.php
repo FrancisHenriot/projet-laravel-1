@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\BackofficeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,5 @@ Route::get('/product', [ProductController::class, 'showList'])->name('product-li
 Route::get('/product/{id}', [ProductController::class, 'showDetail'])->name('product-detail');
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
+
+Route::get('/backoffice', [BackofficeController::class, 'show'])->name('backoffice-layout');
