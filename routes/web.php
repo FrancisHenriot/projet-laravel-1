@@ -38,7 +38,7 @@ Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
 
 Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
-Route::post('/backoffice', [BackOfficeController::class, 'addProduct'])->name('addProduct');
+Route::post('/backoffice', [BackOfficeController::class, 'create'])->name('addProduct');
 
 Route::get('/backoffice/product/{product}', [BackOfficeController::class, 'showDetail'])->name('updateProduct');
 //Route::post('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');

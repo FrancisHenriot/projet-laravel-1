@@ -3,6 +3,15 @@
 @section('title', 'Backoffice- Modification')
 
 @section('formulaire')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('modifyProduct', $product->id) }}" method="post">
         {{ csrf_field() }}
         @method('PUT')
@@ -10,13 +19,13 @@
         <div class="mb-3 row">
             <label class="form-label col-3">Nom de l'article</label>
             <div class="col-8">
-                <input required name="name" value="{{ $product->name }}" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nom du produit">
+                <input name="name" value="{{ $product->name }}" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nom du produit">
             </div>
         </div>
         <div class="mb-3 row">
             <label class="form-label col-3">Prix</label>
             <div class="col-8">
-                <input required name="price" value="{{ $product->price }}" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prix du produit">
+                <input name="price" value="{{ $product->price }}" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prix du produit">
             </div>
         </div>
         <div class="mb-3 row">
@@ -28,7 +37,7 @@
         <div class="mb-3 row">
             <label class="form-label col-3">Catégorie</label>
             <div class="col-8">
-                <select name="categorie_id" value="{{ $product->categorie['name'] }}" class="form-control" id="exampleFormControlTextarea1" rows="3">
+                <select name="categorie_id" value="{{ $product->categorie['name'] }}" class="form-select" id="exampleFormControlTextarea1" rows="3">
                     <option value="" disabled>--Selectionner une catégorie--</option>
                     @foreach ($categories as $categorie)
                         <option value="{{ $categorie->id }}"
