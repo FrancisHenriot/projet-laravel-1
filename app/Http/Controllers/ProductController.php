@@ -9,8 +9,8 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function showDetails(int $id) {
-        return view('pages.product', ['product'=> Product::where('id', $id)->firstOrFail()]);
+    public function showDetails(Product $product) {
+        return view('pages.product', ['product'=>$product]);
     }
 
     public function showCat(Request $request) {

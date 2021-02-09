@@ -25,11 +25,11 @@
                     @endif--}}
                     <div class="card shadow-sm">
                         <div class="col">
-                            <a href="{{ route('details', $product->id) }}">
+                            <a href="{{ route('details', ['product'=>$product]) }}">
                                 <img src="{{ $product-> image }}" alt="{{ $product-> name }}" width="100%" />
                             </a>
                             <div class="card-body">
-                                <a class="link link:hover " href="{{ route('details', $product->id) }}">
+                                <a class="link link:hover " href="{{ route('details', ['product'=>$product]) }}">
                                     <h4>{{ $product-> name }}</h4>
                                 </a>
                                 <div class="d-flex justify-content-between align-items-center">
