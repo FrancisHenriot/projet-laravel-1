@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /* Va retourner ce qui doit être affiché dans la home page*/
-
     public function show()
     {
-        return view('homepage');
+        return view('pages.home');
     }
 }

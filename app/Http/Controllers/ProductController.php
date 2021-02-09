@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function showDetail($id)
+    public function showCat()
     {
-        return view('product-detail', ['id' => $id]);
+        $products = DB::table('products')->get();
+
+        return view('pages.catalog', compact('products'));
     }
 
-    public function showList()
-    {
-        return view('product-list');
+    public function showDetails(int $id) {
+        $product =\DB::table('products')->where('id', $id)->first();
+        return view('pages.product', ['product'=>$product]);
     }
 }

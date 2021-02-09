@@ -1,3 +1,52 @@
+/*.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+.navbar {
+    background-color: #453643;
+}
+
+.dropdown-menu{
+    border-top: 5px solid #C3C76B;
+    border-radius: 5px 5px 10px 10px;
+}
+
+.nav-link{
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #A9AD53;
+
+}
+
+.nav-link:hover{
+    color: #D0D650;
+}*/
+
+/****BACKGROUND****/
+.background-color{
+    background-color: #DDE0BD;
+}
+/****BACKGROUND-END****/
+
+/****ENCADREMENT RUBRIQUES****/
+.encadre{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+/****ENCADREMENT RUBRIQUES - END****/
+
+/****NAVBAR****/
 .navbar {
     background-color: #453643;
 }
@@ -54,6 +103,8 @@
     color: #D0D650;
     border: 2px solid #D0D650;
 }
+
+/****NAVBAR-END****/
 /*-----------------------------footer------------------------------*/
 .container-fluid{
     background-color: #453643;
@@ -65,7 +116,7 @@
     margin-right: 450px;
 }
 .smed{
-margin-top: 50px;
+    margin-top: 50px;
 }
 
 .smed img{
@@ -83,7 +134,7 @@ margin-top: 50px;
 }
 
 .form-abonne{
-padding-left: 40%;
+    padding-left: 40%;
 }
 
 input{
