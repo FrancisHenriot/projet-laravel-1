@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Product;
+
 
 class ProductController extends Controller
 {
-    public function showCat()
-    {
-        $products = DB::table('products')->get();
-
-        return view('pages.catalog', compact('products'));
+    public function showDetails(int $id) {
+        return view('pages.product', ['product'=> Product::where('id', $id)->firstOrFail()]);
     }
 
-    public function showDetails(int $id) {
-        $product =\DB::table('products')->where('id', $id)->first();
-        return view('pages.product', ['product'=>$product]);
+    public function showCat(Request $request) {
+        //return view('pages.catalog', ['products'=> DB::table('products')->get()]);
+        $products = Product::all();
+        if ($request->has('sortBy') && ($request->sortBy == 'name' || $request->sortBy == 'price')) {
+            $products = $products->sortBy($request->sortBy);
+        }
+        return view('pages/catalog', ['products' => $products]);
     }
 }

@@ -1,12 +1,11 @@
-@extends('layouts.mainlayout')
+@extends('layouts.mainLayout')
+
+@section('page', 'Recette d\'exception')
 
 @section('content')
-    <div class="container mt-3">
-
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <h1>{{ $product->name }}</h1>
-            </div>
+    <div class="row container mt-3">
+        <div class="mb-5">
+            <h1>{{ $product->name }}</h1>
         </div>
 
         <div class="row justify-content-around">
@@ -27,7 +26,7 @@
                 </button>
             </div>
             <div class="col-12 col-md-4">
-                <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@
         <!-- Customs -->
         <link rel="stylesheet" href="{{ asset('/css/custom.css') }}" >
 
-        <title> RestHome - @yield('page')</title>
+        <title> RestHome</title>
 
         @show
     </head>
@@ -86,63 +86,20 @@
             </div>
         </nav>
 
-    {{--<header>
-        @section('header')
-            <div class="collapse bg-dark" id="navbarHeader">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-md-7 py-4">
-                            <h4 class="text-white">About</h4>
-                            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-                        </div>
-                        <div class="col-sm-4 offset-md-1 py-4">
-                            <h4 class="text-white">Contact</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                                <li><a href="#" class="text-white">Email me</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @show
-        @section('nav')
-            <div class="navbar navbar-dark bg-dark shadow-sm">
-                <div class="container">
-                    <a href="#" class="navbar-brand d-flex align-items-center">
-                        <img src="{{ asset('image/favicon-light.svg') }}" alt="logo RestHome" height="30" width="30" />
-                        <strong>RestHome</strong>
-
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-        @show
-    </header>--}}
         <main>
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        <h1 class="fw-light">Recettes RestHome</h1>
+                        <h1 class="fw-light">@yield('page')</h1>
                         <p class="lead text-muted">Retrouvez l’excellence d’un restaurant gastronomique à domicile. Nos produits et recettes vous garantiront un moment savoureux et chaleureux, que ce soit avec votre famille ou vos amis.</p>
                         <p>
-                            <a href="catalog" class="btn my-2">Passer commander</a>
-                            <a href="#" class="btn my-2">Consulter la carte</a>
+                            <a href="{{ route('cart') }}" class="btn my-2">Passer commande</a>
+                            <a href="{{ route('catalog') }}" class="btn my-2">Consulter la carte</a>
                         </p>
                     </div>
                 </div>
             </section>
-
-            <div class="album py-5 bg-light">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
+            @yield('content')
         </main>
 
         <footer class="text-muted py-5">
@@ -165,7 +122,13 @@
                                 <div class="col smed"><img class="img-fluid mx-auto d-block" src={{ asset('image/linkedin.svg') }} alt="linkedin"></div>
                                 <div class="col smed"><img class="img-fluid mx-auto d-block" src={{ asset('image/instagram.svg') }} alt="instagram"></div>
                             </div>
+                            <div class="text">
+                                <p>
+                                    <a href="#">Back to top</a>
+                                </p>
+                            </div>
                             <div class = "inscrivez">
+
                                 <div class = "text">
                                     <p> Inscrivez-vous à notre newsletter <br>
                                         et recevez toutes les dernières actualités du groupe RestHome</p>
@@ -176,7 +139,7 @@
                                     </div>
                                     <br>
                                     <div>
-                                        <button type="button" class="btn btn-outline-success d-block mx-auto">JE M'ABONNE</button>
+                                        <button type="button" class="btn btn:hover btn-outline-success d-block mx-auto">JE M'ABONNE</button>
                                     </div>
                                 </form>
                                 <div class = "text">
