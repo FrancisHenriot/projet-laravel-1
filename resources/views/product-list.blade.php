@@ -30,7 +30,7 @@
                                                     <h5 class="card-title">{{ $product->name }}</h5>
                                                 </a>
                                                 <p class="card-text">{{ $product->description }}</p>
-                                                <p class="card-text">Catégorie : {{ $product->categorie['name'] }}</p>
+                                                <p class="card-text">Catégorie : {{ $product->categorie->name }}</p>
                                             </div>
                                             <div class="col-2 align-self-end">
                                                 <button class="btn" type="submit">
