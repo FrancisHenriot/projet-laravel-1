@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBackofficePostRequest;
+use App\Http\Requests\UpdateBackofficePostRequest;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -24,9 +26,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBackofficePostRequest $request)
     {
-        Product::create($request->all());
+        //Product::create($request->all());
+        $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->categorie_id = $request->categorie_id;
+        $product->save();
     }
 
     /**
@@ -47,9 +55,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateBackofficePostRequest $request, Product $product)
     {
-        $product->update($request->all());
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->categorie_id = $request->categorie_id;
+        $product->save();
     }
 
     /**
