@@ -18,11 +18,6 @@
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($products as $product)
-                    {{--@isset($_POST['price'])
-                        {{$sorted = $products->sortBy('price')}}
-                    @elseif($_POST['sortBy']==='name')
-                        {{$sorted = $products->sortBy('name')}}
-                    @endif--}}
                     <div class="card shadow-sm">
                         <div class="col">
                             <a href="{{ route('details', ['product'=>$product]) }}">

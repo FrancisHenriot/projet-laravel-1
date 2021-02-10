@@ -15,10 +15,10 @@ class ProductController extends Controller
 
     public function showCat(Request $request) {
         //return view('pages.catalog', ['products'=> DB::table('products')->get()]);
-        $products = Product::all();
+        $products = Product::query();
         if ($request->has('sortBy') && ($request->sortBy == 'name' || $request->sortBy == 'price')) {
-            $products = $products->sortBy($request->sortBy);
+            $products = $products->orderBy($request->sortBy);
         }
-        return view('pages/catalog', ['products' => $products]);
+        return view('pages/catalog', ['products' => $products->get()]);
     }
 }
