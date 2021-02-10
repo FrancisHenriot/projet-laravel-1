@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Categorie;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,14 +29,16 @@ class ProductController extends Controller
 
     public function showList(Request $request)
     {
-        $products = Product::all();
+        $products = Product::query();
         if ($request->has('sortBy') && ($request->sortBy == 'name' || $request->sortBy == 'price')) {
-            $products = $products->sortBy($request->sortBy);
+            $products = $products->orderBy($request->sortBy);
         }
         if ($request->has('categorie')) {
-            $categorie = Categorie::find($request->categorie);
-            $products = $categorie->products;
+            $products = $products->whereHas('categorie', function(Builder $query) use ($request){
+                $query->where('id', $request->categorie);
+            });
+
         }
-        return view('product-list', ['products' => $products]);
+        return view('product-list', ['products' => $products->get()]);
     }
 }

@@ -44,3 +44,5 @@ Route::get('/backoffice/product/{product}', [BackOfficeController::class, 'showD
 //Route::post('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
 Route::put('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
 Route::delete('/backoffice/product/{product}', [BackOfficeController::class, 'deleteProduct'])->name('deleteProduct');
+
+require __DIR__.'/auth.php';
