@@ -9,6 +9,10 @@
     <h1>Ajout de produits</h1>
     <form action="/backoffice/addproduct" method="post">
         {{ csrf_field() }}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 303d290e95cbf9361e036b9114578cae004e0dca
         <input name="id" type="number" placeholder="ID du produit">
         <input name="name" type="text" placeholder="Nom du Produit">
         <input name="price" type="number" placeholder="Prix du Produit">

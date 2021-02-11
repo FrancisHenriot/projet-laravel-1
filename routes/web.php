@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\ModifyProductController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
