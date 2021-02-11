@@ -20,17 +20,9 @@ class AddProductController extends Controller
     {$product = new Product;
         $product->name=$request->name;
         $product->price=$request->price;
-<<<<<<< HEAD
 		$product->category_id=$request->category_id;
 
 		$product->save();
-=======
-        $product->category_id=$request->category_id;
-
-        $product->save();
-
-
->>>>>>> 303d290e95cbf9361e036b9114578cae004e0dca
         /*$data = [
             'product' => [
                 'name' => $request->input('name'),
