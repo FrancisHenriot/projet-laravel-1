@@ -1,9 +1,9 @@
 @extends('layouts.backoffice-layout')
 
 
-@section('formulaire')
+@section('formulaire add')
 
-    <h1>Formulaire</h1>
+    <h1>Formulaire add</h1>
 
 
         <div class="col-8">

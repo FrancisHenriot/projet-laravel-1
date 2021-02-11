@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\BackofficeController;
-
+use App\Http\Controllers\AddProductController;
+use App\Http\Controllers\ModifyProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,12 @@ Route::get('/product/{id}', [ProductController::class, 'showDetail'])->name('pro
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
 Route::get('/backoffice', [BackofficeController::class, 'show'])->name('backoffice-layout');
+
+Route::get('/backoffice/addproduct', [AddProductController::class, 'create'])->name('backoffice-layout');
+Route::post('/backoffice/addproduct', [AddProductController::class, 'store'])->name('backoffice-layout');
+
+Route::get('/backoffice/modifyproduct/{id}', [ModifyProductController::class, 'edit'])->name('backoffice-layout');
+Route::post('/backoffice/modifyproduct/{id}', [ModifyProductController::class, 'store'])->name('backoffice-layout');
+
+Route::get('/backoffice/deleteproduct', [DeleteProductController::class, 'create'])->name('backoffice-layout');
+Route::post('/backoffice/deleteproduct', [DeleteProductController::class, 'store'])->name('backoffice-layout');
