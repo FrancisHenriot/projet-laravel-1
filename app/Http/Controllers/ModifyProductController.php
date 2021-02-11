@@ -9,9 +9,10 @@ use App\Models\Product;
 class ModifyProductController extends Controller
 
 {
-    public function edit()
+    public function edit($id)
     {
-        return view('modifyproduct');
+        $id = Product::find($id);
+        return view('modifyproduct', ['id'=>$id]);
     }
 
 
