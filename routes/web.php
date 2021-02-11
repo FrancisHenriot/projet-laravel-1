@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BackOfficeController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,29 @@ Route::get('/', [HomeController::class, 'show'])->name('home');
 
 Route::get('/product', [ProductController::class, 'showList'])->name('product-list');
 
+/*version où l'on passe le numéro d'id comme un integer
 Route::get('/product/{id}', [ProductController::class, 'showDetail'])->name('product-detail');
+*/
+
+/*version ou l'on va faire de l'injection de dépendance, c'est à dire qu'on va envoyer le numéro de l'id,
+mais en le nommant du même nom que notre modèle (Product), la fonction créera directement un objet d'après ce numéro d'id*/
+Route::get('/product/{product}', [ProductController::class, 'showDetail'])->name('product-detail');
+/*fin version*/
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
+
+
+
+Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
+Route::post('/backoffice', [BackOfficeController::class, 'create'])->name('addProduct');
+
+Route::get('/backoffice/product/{product}', [BackOfficeController::class, 'showDetail'])->name('updateProduct');
+//Route::post('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
+Route::put('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
+Route::delete('/backoffice/product/{product}', [BackOfficeController::class, 'deleteProduct'])->name('deleteProduct');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
