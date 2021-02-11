@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class BackOfficeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showIndex(Request $request)
     {
         $categories = Categorie::all();

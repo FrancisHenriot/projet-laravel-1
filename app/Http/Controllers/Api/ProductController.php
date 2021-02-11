@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreBackofficePostRequest;
 use App\Http\Requests\UpdateBackofficePostRequest;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        return Product::with('categorie')->get();
     }
 
     /**
@@ -45,7 +46,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return $product;
+
+        return $product->load('categorie');
     }
 
     /**
