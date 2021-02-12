@@ -7,83 +7,42 @@ use Illuminate\Http\Request;
 
 class BackofficeController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        //dd($products);
-        return view('pages.backoffice', ['products'=>$products]);
+        $products = Product::query();
+        if ($request->has('search')) {
+            $products = Product::where('name', 'like', '%' . $request->filter . '%');
+        }
+        return view('pages.backoffice.products.index', ['products' => $products->get()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->quantity = $request->quantity;
+        $product->description = $request->description;
+        $product->category = $request->category;
         $product->save();
-        return view('pages.backoffice', ['products' => $product]);
+        $products = Product::all();
+        return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
-        return view('pages.backoffice', ['product'=>$product]);
-
+        $products = Product::all();
+        return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Product $product, Request $request)
     {
-        //
+
+        return view('pages.backoffice.products.index', ['products' => $products->get()]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete(Product $product)
     {
-        //
+        $product->delete();
+        return back();
     }
 }

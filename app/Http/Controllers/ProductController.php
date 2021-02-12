@@ -14,7 +14,6 @@ class ProductController extends Controller
     }
 
     public function showCat(Request $request) {
-        //return view('pages.catalog', ['products'=> DB::table('products')->get()]);
         $products = Product::query();
         if ($request->has('sortBy') && ($request->sortBy == 'name' || $request->sortBy == 'price')) {
             $products = $products->orderBy($request->sortBy);
