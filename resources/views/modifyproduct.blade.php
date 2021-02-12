@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Modification du produit {{ $product->name }}</h1>
-    <form action="/backoffice/modifyproduct" method="post">
+    <form action="/backoffice/modifyproduct/{{ $product->id }}" method="post">
         {{ csrf_field() }}
         <input name="id" type="number" value="{{ $product->id }}">
         <input name="name" type="text" value="{{ $product->name }}">
