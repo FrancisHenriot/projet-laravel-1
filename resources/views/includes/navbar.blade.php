@@ -60,21 +60,23 @@
                 </a>
             </li>
             <li class="nav-item mx-3">
-               {{--  <div class="container">
-                <div class="row"> --}}
-                    @if (Auth::check())
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn" >Se deconnecter</button>
-                    </form>
-                    <p class="col-4" style="color: #ffffff">{{ Auth::user()->name }}</p>
-                    @else
-
-                    <a class="btn" href="{{ route('register') }}">Se connecter</a>
-
-                    @endif
-                {{-- </div>
-                </div> --}}
+                @if (Auth::check())
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-4 align-self-center">
+                                <p class="mb-0" style="color: #ffffff">{{ Auth::user()->name }}</p>
+                            </div>
+                            <div class="col-8">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn" style="width: auto" >Deconnexion</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                <a class="btn" href="{{ route('register') }}">Se connecter</a>
+                @endif
             </li>
         </ul>
 
