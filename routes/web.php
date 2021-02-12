@@ -36,17 +36,16 @@ Route::get('/product/{product}', [ProductController::class, 'showDetail'])->name
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
+    Route::post('/backoffice', [BackOfficeController::class, 'create'])->name('addProduct');
+    Route::get('/backoffice/product/{product}', [BackOfficeController::class, 'showDetail'])->name('updateProduct');
+    Route::put('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
+    Route::delete('/backoffice/product/{product}', [BackOfficeController::class, 'deleteProduct'])->name('deleteProduct');
+});
 
-Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
-Route::post('/backoffice', [BackOfficeController::class, 'create'])->name('addProduct');
-
-Route::get('/backoffice/product/{product}', [BackOfficeController::class, 'showDetail'])->name('updateProduct');
-//Route::post('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
-Route::put('/backoffice/product/{product}', [BackOfficeController::class, 'modifyProduct'])->name('modifyProduct');
-Route::delete('/backoffice/product/{product}', [BackOfficeController::class, 'deleteProduct'])->name('deleteProduct');
-
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard'); */
 
 require __DIR__ . '/auth.php';

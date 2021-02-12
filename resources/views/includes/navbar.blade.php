@@ -60,21 +60,21 @@
                 </a>
             </li>
             <li class="nav-item mx-3">
-                <div class="container">
-                <div class="row">
+               {{--  <div class="container">
+                <div class="row"> --}}
                     @if (Auth::check())
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn col-6" >Se deconnecter</button>
+                        <button type="submit" class="btn" >Se deconnecter</button>
                     </form>
                     <p class="col-4" style="color: #ffffff">{{ Auth::user()->name }}</p>
                     @else
 
-                    <a class="btn col-6" href="{{ route('register') }}">Se connecter</a>
+                    <a class="btn" href="{{ route('register') }}">Se connecter</a>
 
                     @endif
-                </div>
-                </div>
+                {{-- </div>
+                </div> --}}
             </li>
         </ul>
 

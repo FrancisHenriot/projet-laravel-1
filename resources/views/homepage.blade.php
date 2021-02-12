@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 600px">
         <h1>Contenu de la Home Page</h1>
     </div>
 @endsection

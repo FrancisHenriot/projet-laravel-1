@@ -12,7 +12,7 @@
                     <option value="name">Nom</option>
                     <option value="price">Prix</option>
                 </select>
-                <button class="btn btn-outline-secondary" type="submit">Button</button>
+                <button class="btn" type="submit">Valider</button>
             </form>
         </div>
     </div>
