@@ -34,7 +34,7 @@ Route::get('/product/{product}', [ProductController::class, 'showDetail'])->name
 /*fin version*/
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
-
+Route::get('/cart/{order}', [CartController::class, 'show'])->name('cartDetail');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');

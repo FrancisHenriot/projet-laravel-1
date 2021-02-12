@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Categorie;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
