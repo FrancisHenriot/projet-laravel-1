@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Playfair&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/custom.css') }}" >
-        <title>RestHome - @yield('title')</title>
+        <title>RestHome - @yield('page')</title>
     </head>
 
     <body>
@@ -33,7 +33,7 @@
                                     </span>
                                     <button name="search" class="col-auto btn btn-light" type="submit">OK</button>
                                 </div>
-                                <button name="search" class="btn btn-light col-3" type="submit">Aficher tout</button>
+                                <button name="display" class="btn btn-light col-3" type="submit">Aficher tout</button>
                             </div>
                         </form>
                     </div>

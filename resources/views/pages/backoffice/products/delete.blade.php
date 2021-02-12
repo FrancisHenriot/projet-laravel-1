@@ -10,7 +10,6 @@
         <div class="panel-body">
             <form class="" action="#" method="post">
                 {{ csrf_field() }}
-                @method('DELETE')
                 <div class="form-group">
                     <label for="name">Nom de l'article</label>
                     <input type="text" class="form-control" name="name" value="{{ $product->name }}" placeholder="Nome de l'article">

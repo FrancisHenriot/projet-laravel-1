@@ -23,6 +23,7 @@ class BackofficeController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         $product->category = $request->category;
+        $product->quantity = $request->quantity;
         $product->save();
         $products = Product::all();
         return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
@@ -34,10 +35,16 @@ class BackofficeController extends Controller
         return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
     }
 
-    public function update(Product $product, Request $request)
+    public function update(Request $request, Product $product)
     {
-
-        return view('pages.backoffice.products.index', ['products' => $products->get()]);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->category = $request->category;
+        $product->quantity = $request->quantity;
+        $product->save();
+        $products = Product::all();
+        return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
     }
 
     public function delete(Product $product)

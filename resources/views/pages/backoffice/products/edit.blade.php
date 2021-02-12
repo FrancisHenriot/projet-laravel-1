@@ -10,7 +10,6 @@
         <div class="panel-body">
             <form class="" action="{{ route('pages.backoffice.product.update'), $product->id }}" method="post">
                 {{ csrf_field() }}
-                @method('PUT')
                 <div class="form-group">
                     <label for="name">Nom de l'article</label>
                     <input type="text" class="form-control" name="name" value="{{ $product->name }}" placeholder="Nom de l'article">
