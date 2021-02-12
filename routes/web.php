@@ -38,5 +38,5 @@ Route::post('/backoffice/addproduct', [AddProductController::class, 'store'])->n
 Route::get('/backoffice/modifyproduct/{id}', [ModifyProductController::class, 'edit'])->name('backoffice-layout');
 Route::post('/backoffice/modifyproduct/{id}', [ModifyProductController::class, 'store'])->name('backoffice-layout');
 
-Route::get('/backoffice/deleteproduct/{id}', [DeleteProductController::class, 'create'])->name('backoffice-layout');
+Route::get('/backoffice/deleteproduct/{id}', [DeleteProductController::class, 'delete'])->name('backoffice-layout');
 Route::post('/backoffice/deleteproduct/{id}', [DeleteProductController::class, 'store'])->name('backoffice-layout');

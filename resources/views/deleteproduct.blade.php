@@ -9,10 +9,10 @@
     <h1>Suppression de produits</h1>
     <form action="/backoffice/deleteproduct" method="post">
         {{ csrf_field() }}
-        <input name="id" type="number" placeholder="ID du produit">
-        <input name="name" type="text" placeholder="Nom du Produit">
-        <input name="price" type="number" placeholder="Prix du Produit">
-        <input name="category_id" type="number" placeholder="Categorie du produit">
+        <input name="id" type="number" placeholder="{{ $product->id }}">
+        <input name="name" type="text" placeholder="{{ $product->name }}">
+        <input name="price" type="number" placeholder="{{ $product->price }}">
+        <input name="category_id" type="number" placeholder="{{ $product->categoty_id }}">
 
         <button name="add" class="btn" type="submit">Delete product</button>
     </form>
