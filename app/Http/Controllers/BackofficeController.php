@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -16,17 +17,17 @@ class BackofficeController extends Controller
         return view('pages.backoffice.products.index', ['products' => $products->get()]);
     }
 
-    public function create(Request $request)
+    public function create(ProductRequest $request)
     {
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->category = $request->category;
+        $product->category_id = $request->category_id;
         $product->quantity = $request->quantity;
         $product->save();
-        $products = Product::all();
-        return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
+
+        return redirect()->route('backoffice');
     }
 
     public function edit(Product $product)
@@ -35,21 +36,22 @@ class BackofficeController extends Controller
         return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->category = $request->category;
         $product->quantity = $request->quantity;
+        $product->category_id = $request->category_id;
         $product->save();
-        $products = Product::all();
-        return view('pages.backoffice.products.index', ['product' => $product, 'products' => $products]);
+
+        return redirect()->route('backoffice');
     }
 
     public function delete(Product $product)
     {
         $product->delete();
-        return back();
+
+        return redirect()->route('backoffice');
     }
 }

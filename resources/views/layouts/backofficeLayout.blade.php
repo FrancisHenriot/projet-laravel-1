@@ -41,10 +41,10 @@
             </div>
             <div class="container mt-5">
                 <div class="row">
-                    <div class="col-6 px-5">
+                    <div class="col-4 px-5">
                         @yield('form')
                     </div>
-                    <div class="col-6">
+                    <div class="col-auto">
                         <div class="container p-0">
                             <div class="row position-relative">
                                 <h2 class="col-6">Liste des produits</h2>
