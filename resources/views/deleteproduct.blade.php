@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Suppression de produits</h1>
-    <form action="/backoffice/deleteproduct" method="post">
+    <form action="/backoffice/deleteproduct/" method="post">
         {{ csrf_field() }}
         <input name="id" type="number" placeholder="{{ $product->id }}">
         <input name="name" type="text" placeholder="{{ $product->name }}">
