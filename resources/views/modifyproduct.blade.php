@@ -6,13 +6,13 @@
     <title>Modifications des produits</title>
 </head>
 <body>
-    <h1>Modification de produits</h1>
+    <h1>Modification du produit {{ $product->name }}</h1>
     <form action="/backoffice/modifyproduct" method="post">
         {{ csrf_field() }}
-        <input name="id" type="number" placeholder="ID du produit">
-        <input name="name" type="text" placeholder="Nom du Produit">
-        <input name="price" type="number" placeholder="Prix du Produit">
-        <input name="category_id" type="number" placeholder="Categorie du produit">
+        <input name="id" type="number" value="{{ $product->id }}">
+        <input name="name" type="text" value="{{ $product->name }}">
+        <input name="price" type="number" value="{{ $product->price }}">
+        <input name="category_id" type="number" value="{{ $product->category_id }}">
 
         <button name="add" class="btn" type="submit">Modify product</button>
     </form>

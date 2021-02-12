@@ -11,12 +11,12 @@ class ModifyProductController extends Controller
 {
     public function edit($id)
     {
-        $id = Product::find($id);
-        return view('modifyproduct', ['id'=>$id]);
+        $product = Product::find($id);
+        return view('modifyproduct', ['product' => $product]);
+        //ici je dois récupérer le contenu de mon formulaire. Pour cela, je peux m'appuyer sur le mini-projet formulaire.
+        //ici je dois utiliser mon model product pour insérer mon produit dans ma base de données
+
     }
-
-
-
 
 
 }
