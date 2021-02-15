@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function showDetail($id)
     {
-        return view('product-detail', ['id' => $id]);
+
+        $product = Product::find($id);
+        return view('product-detail', ['product' => $product]);
+
     }
 
-    public function showList()
-    {
-        return view('product-list');
-    }
+
 }

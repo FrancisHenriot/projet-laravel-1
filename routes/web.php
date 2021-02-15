@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\ModifyProductController;
+use App\Http\Controllers\DeleteProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,5 +38,5 @@ Route::post('/backoffice/addproduct', [AddProductController::class, 'store'])->n
 Route::get('/backoffice/modifyproduct/{id}', [ModifyProductController::class, 'edit'])->name('backoffice-layout');
 Route::post('/backoffice/modifyproduct/{id}', [ModifyProductController::class, 'store'])->name('backoffice-layout');
 
-Route::get('/backoffice/deleteproduct', [DeleteProductController::class, 'create'])->name('backoffice-layout');
-Route::post('/backoffice/deleteproduct', [DeleteProductController::class, 'store'])->name('backoffice-layout');
+Route::get('/backoffice/deleteproduct/{id}', [DeleteProductController::class, 'delete'])->name('backoffice-layout');
+Route::post('/backoffice/deleteproduct/{id}', [DeleteProductController::class, 'store'])->name('backoffice-layout');

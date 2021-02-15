@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Product;
 
 class DeleteProductController extends Controller
 
 {
-    public function create()
+    public function delete($id)
     {
-        return view('formulairedelete');
+        $product = Product::find($id);
+        return view('deleteproduct', ['product' => $product]);
     }
 
-    public function store()
+    public function store(Request $request, $id)
     {
-        return view('formulairedelete');
+        $data = Product::find($id);
+        $data->name=$request->name;
+        $data->price=$request->price;
+		$data->category_id=$request->category_id;
+
+        $data->save();
+
+        return view('deleteproduct', $data);
     }
 }
