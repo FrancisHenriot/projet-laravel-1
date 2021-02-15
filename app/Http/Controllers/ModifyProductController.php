@@ -30,4 +30,5 @@ public function store(Request $request, $id)
         return view('modifyproduct', $data);
     }
 
+
 }
