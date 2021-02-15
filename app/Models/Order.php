@@ -11,13 +11,13 @@ class Order extends Model
     const STATUS_CART = 'cart';
     const STATUS_ORDERED = 'ordered';
 
-    public function customer ()
+    public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function products ()
+    public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 }
