@@ -30,6 +30,9 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        /* Ajout pour conserver l'ancien numéro de session */
+        session(['oldId' => session()->getId()]);
+
         $request->session()->regenerate();
 
         return redirect(RouteServiceProvider::HOME);
