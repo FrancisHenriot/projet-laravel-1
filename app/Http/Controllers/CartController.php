@@ -13,17 +13,28 @@ class CartController extends Controller
         return view('cart', ['order' => $order]);
     }
 
-    public function add(Order $order, Request $request)
+    public function update(Order $order, Request $request)
     {
         $product_id = $request->product_id;
-        if ($request->has('add')) {
 
-            $quantity = $order->pivot->product_id;
-            dd($quantity);
-            $order->products()->updateExistingPivot($request->product_id, ['quantity' => +1]);
-            dd($order);
-            //$order->;
+        if ($request->has('add')) {
+            $quantity = $order->products()->where('product_id', $product_id)->first()->pivot->quantity;
+            $order->products()->updateExistingPivot($request->product_id, ['quantity' => $quantity + 1]);
         }
-        return redirect(back());
+
+        if ($request->has('remove')) {
+            $quantity = $order->products()->where('product_id', $product_id)->first()->pivot->quantity;
+            if ($quantity - 1 <= 0) {
+                $order->products()->where('product_id', $product_id)->first()->pivot->delete();
+            } else {
+                $order->products()->updateExistingPivot($request->product_id, ['quantity' => $quantity - 1]);
+            }
+        }
+
+        if ($request->has('suppr')) {
+            $order->products()->where('product_id', $product_id)->first()->pivot->delete();
+        }
+
+        return redirect()->back()->with('message', 'Panier mis à jour');
     }
 }

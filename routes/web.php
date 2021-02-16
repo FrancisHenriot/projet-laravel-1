@@ -35,7 +35,7 @@ Route::get('/product/{product}', [ProductController::class, 'showDetail'])->name
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
 Route::get('/cart/{order}', [CartController::class, 'show'])->name('cartDetail');
-Route::post('/cart/{order}', [CartController::class, 'add'])->name('cartAdd');
+Route::post('/cart/{order}', [CartController::class, 'update'])->name('cartUpdate');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/backoffice', [BackOfficeController::class, 'showIndex'])->name('backoffice');
