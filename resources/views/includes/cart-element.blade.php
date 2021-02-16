@@ -24,10 +24,10 @@
                 </form>
             </div>
             <p class="text-center" style="font-family: fairplay-display; font-weight: bold ; font-size: 30px; color: #A9AD53">{{ $product->price * $product->pivot->quantity }} €</p>
-            <form class="m-auto" action="{{ route('cartUpdate', $order->id) }}" method="post">
+            <form class="ms-auto" action="{{ route('cartUpdate', $order->id) }}" method="post">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}"/>
-                <button class="btn align-self-end" style="width: auto" type="submit" name="suppr">Supprimer</button>
+                <button class="btn" style="width: auto" type="submit" name="suppr">Supprimer</button>
             </form>
         </div>
     </div>

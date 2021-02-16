@@ -34,6 +34,7 @@ Route::get('/product/{product}', [ProductController::class, 'showDetail'])->name
 /*fin version*/
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
+Route::post('/cart', [CartController::class, 'create'])->name('cartAdd');
 Route::get('/cart/{order}', [CartController::class, 'show'])->name('cartDetail');
 Route::post('/cart/{order}', [CartController::class, 'update'])->name('cartUpdate');
 

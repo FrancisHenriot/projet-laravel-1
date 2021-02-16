@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CustomerController;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class CartController extends Controller
 {
@@ -24,9 +27,7 @@ class CartController extends Controller
 
         if ($request->has('remove')) {
             $quantity = $order->products()->where('product_id', $product_id)->first()->pivot->quantity;
-            if ($quantity - 1 <= 0) {
-                $order->products()->where('product_id', $product_id)->first()->pivot->delete();
-            } else {
+            if ($quantity - 1 >= 1) {
                 $order->products()->updateExistingPivot($request->product_id, ['quantity' => $quantity - 1]);
             }
         }
@@ -35,6 +36,19 @@ class CartController extends Controller
             $order->products()->where('product_id', $product_id)->first()->pivot->delete();
         }
 
-        return redirect()->back()->with('message', 'Panier mis à jour');
+        return redirect()->back()->with('success', 'Panier mis à jour');
     }
+
+    /* public function create(Request $request)
+    {
+        if (!Auth::check()) {
+            app('App\Http\Controllers\CustomerController')->create('Guest', session()->getId());
+            dd(session());
+            $order = Order::query();
+            $order = $order->whereHas('customer', function (Builder $query) use ($request) {
+                $query->where('first_name', 'Ryan');
+            });
+            dd($order->get());
+        }
+    } */
 }
